@@ -1,0 +1,24 @@
+:root {
+  --container-width: 750px;
+  --container-padding-x: 15px;
+
+  --font-family: 'Kanit', sans-serif;
+  --second-family: 'Inter', sans-serif;
+
+  --border-radius: 6px;
+
+  --transition-duration: .2s;
+  --transition-function: linear;
+
+  --background-color: #252525;
+  --second-background-color: #252525b3;
+
+  --color-main: #f7f7f7;
+	--color-accent: #6c63ff;
+  --color-grey: #666666;
+  --color-light-grey: #ffffff80;
+
+  --color-common: #f7f7f7;
+  --color-important: #ffbf00;
+  --color-urgent: #ee4b2b;
+}

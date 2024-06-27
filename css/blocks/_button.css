@@ -1,0 +1,32 @@
+.button {
+  width: min-content;
+  height: 38px;
+  padding: 10px;
+
+  font-family: inherit;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1;
+  text-transform: capitalize;
+
+  color: var(--color-main);
+  background-color: var(--color-accent);
+  border-radius: var(--border-radius);
+
+  transition-property: box-shadow, transform;
+  transition-duration: var(--transition-duration);
+  transition-timing-function: var(--transition-function);
+}
+
+.button:focus {
+  outline: none;
+}
+
+.button:hover,
+.button:focus-within {
+  box-shadow: 1px 1px 10px var(--color-accent);
+}
+
+.button:active {
+  transform: scale(0.97);
+}

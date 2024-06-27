@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>todo app</title>
+
+  <link href="css/styles.css" rel="stylesheet">
+</head>
+<body>
+  <div class="app">
+    <div class="app__container container">
+      <h1 class="app__title">todo list</h1>
+
+      <form class="app__form form" action="#" method="post">
+        <input class="form__input" type="text" name="task" placeholder="Enter a task...">
+
+        <div class="select-wrapper">
+          <select class="select" name="select">
+            <option value="common">Common</option>
+            <option value="important">Important</option>
+            <option value="urgent">Urgent</option>
+          </select>
+        </div>
+
+        <button class="button button-reset add" type="submit">add</button>
+        <button class="button button-reset reset" type="reset">reset</button>
+      </form>
+
+      <table class="table">
+        <tbody class="table__tbody">
+          <tr class="table__row">
+            <td class="table__data checkbox">
+              <input class="checkbox__custom-input common" type="checkbox" name="checkbox">
+            </td>
+            <td class="table__data table__data--complete">task #1</td>
+            <td class="table__data">Process</td>
+            <td class="table__data">
+              <button class="table__button button button-reset" type="button">edit</button>
+              <button class="table__button button button-reset" type="button">delete</button>
+            </td>
+          </tr>
+
+          <tr class="table__row">
+            <td class="table__data checkbox">
+              <input class="checkbox__custom-input important" type="checkbox" name="checkbox">
+            </td>
+            <td class="table__data">task #2</td>
+            <td class="table__data">Process</td>
+            <td class="table__data">
+              <button class="table__button button button-reset" type="button">edit</button>
+              <button class="table__button button button-reset" type="button">delete</button>
+            </td>
+          </tr>
+
+          <tr class="table__row">
+            <td class="table__data checkbox">
+              <input class="checkbox__custom-input urgent" type="checkbox" name="checkbox">
+            </td>
+            <td class="table__data">task #3</td>
+            <td class="table__data">Process</td>
+            <td class="table__data">
+              <button class="table__button button button-reset" type="button">edit</button>
+              <button class="table__button button button-reset" type="button">delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="empty">
+        <img
+          class="empty__image"
+          src="/img/empty.svg"
+          aria-hidden="true"
+          alt=""
+          width="221" height="174" loading="lazy"
+        >
+        <span class="empty__text">Empty...</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="overlay">
+    <div class="container">
+      <form class="modal" action="#" method="post">
+        <h2 class="modal__title">Login</h2>
+        <input class="modal__input" type="text" name="user-name" placeholder="Input your name...">
+        <button class="modal__button button button-reset" type="button">
+          Enter
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <div class="overlay">
+    <div class="container">
+      <form class="modal modal--confirm" action="#" method="post">
+        <p class="modal__text">Are you sure you want to delete the task?</p>
+        <div class="modal__btn-group">
+          <button class="modal__button button button-reset cancel" type="button">
+            Cancel
+          </button>
+          <button class="modal__button button button-reset apply" type="submit">
+            Apply
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

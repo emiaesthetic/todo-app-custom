@@ -1,0 +1,54 @@
+html {
+  position: relative;
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+body {
+  position: relative;
+  min-width: 360px;
+  min-height: 100vh;
+
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1;
+
+  color: var(--color-main);
+  background-color: var(--background-color);
+  overflow-x: hidden;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+svg {
+  max-height: 100%;
+}
+
+.visually-hidden {
+  position: fixed;
+  transform: scale(0);
+}
+
+.button-reset {
+  border: none;
+  padding: 0;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.container {
+  max-width: calc(var(--container-width) + var(--container-padding-x) * 2);
+  padding: 0 var(--container-padding-x);
+  margin: 0 auto;
+}
