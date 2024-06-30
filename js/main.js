@@ -5,6 +5,7 @@ import {
   addTaskControl,
   removeTaskControl,
   editTaskControl,
+  completeTaskControl,
 } from './modules/controls.js';
 
 {
@@ -32,8 +33,9 @@ import {
       renderTasks(list, userTasks);
 
       addTaskControl(form, list, userName);
-      removeTaskControl(list, userName, confirmOverlay, confirmForm);
       editTaskControl(list, userName);
+      completeTaskControl(list, userName);
+      removeTaskControl(list, userName, confirmOverlay, confirmForm);
 
       closeModal(loginOverlay);
     });

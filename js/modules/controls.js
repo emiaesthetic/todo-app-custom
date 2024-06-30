@@ -4,6 +4,7 @@ import {
   addUserTask,
   removeUserTask,
   editUserTask,
+  completeUserTask,
 } from './serviceStorage.js';
 
 const addTaskPage = (list, task) => {
@@ -74,6 +75,31 @@ export const editTaskControl = (list, userName) => {
         desc.contentEditable = false;
         editUserTask(userName, row.dataset.id, desc.textContent);
       });
+    }
+  });
+};
+
+export const completeTaskControl = (list, userName) => {
+  list.addEventListener('click', (e) => {
+    const target = e.target;
+
+    if (target.closest('.checkbox__custom-input')) {
+      const row = target.closest('tr');
+      const checkbox = row.querySelector('.checkbox__custom-input');
+      const desc = row.querySelector('.desc');
+      const status = row.querySelector('.status');
+      const btnEdit = row.querySelector('.edit');
+
+      desc.classList.toggle('table__data--complete');
+      if (checkbox.checked) {
+        status.textContent = 'Done';
+        btnEdit.disabled = true;
+      } else {
+        status.textContent = 'Process';
+        btnEdit.disabled = false;
+      }
+
+      completeUserTask(userName, row.dataset.id);
     }
   });
 };

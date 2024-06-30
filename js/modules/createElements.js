@@ -91,7 +91,7 @@ export const createTable = () => {
 
 const createColumn = ({className, text}) => {
   const td = document.createElement('td');
-  td.classList.add('table__date', className);
+  td.classList.add('table__date', ...className.split(' '));
   td.insertAdjacentHTML('afterbegin', text);
 
   return td;
@@ -104,11 +104,18 @@ export const createRow = ({id, desc, status, priority}) => {
 
   const checkboxHTML = `
     <input
-      class="checkbox__custom-input ${priority}" type="checkbox" name="checkbox"
+      class="checkbox__custom-input ${priority}"
+      type="checkbox"
+      name="checkbox"
+      ${status ? 'checked' : ''}
     >
   `;
+
   const tdCheckbox = createColumn({className: 'checkbox', text: checkboxHTML});
-  const tdDesc = createColumn({className: 'desc', text: desc});
+  const tdDesc = createColumn({
+    className: status ? 'desc table__data--complete' : 'desc',
+    text: desc,
+  });
   const tdStatus = createColumn({
     className: 'status',
     text: status ? 'Done' : 'Process',
@@ -120,6 +127,7 @@ export const createRow = ({id, desc, status, priority}) => {
     type: 'button',
     text: 'Edit',
   });
+  btnEdit.disabled = status;
 
   const btnDelete = createButton({
     className: 'table__button button button-reset delete',
