@@ -62,6 +62,7 @@ export const createTaskForm = () => {
     type: 'submit',
     text: 'Add',
   });
+  btnAdd.disabled = true;
 
   const btnReset = createButton({
     className: 'button button-reset reset',
