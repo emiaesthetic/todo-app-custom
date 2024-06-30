@@ -15,16 +15,16 @@
   line-height: 1;
 }
 
-.table__data:first-child {
+.checkbox {
   width: 44px;
 }
 
-.table__data:nth-child(3) {
-  width: 120px;
+.status {
+  width: 200px;
   text-align: center;
 }
 
-.table__data:last-child {
+.buttons {
   text-align: right;
   width: 20%;
 }

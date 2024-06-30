@@ -30,3 +30,7 @@
 .button:active {
   transform: scale(0.97);
 }
+
+.button:disabled {
+  opacity: .5;
+}

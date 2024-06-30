@@ -45,12 +45,12 @@ export const createTaskForm = () => {
         <input
           class="form__input"
           type="text"
-          name="task"
+          name="desc"
           placeholder="Enter a task..."
         >
         <div class="select-wrapper">
-          <select class="select" name="select">
-            <option value="common">Common</option>
+          <select class="select" name="priority">
+            <option value="common" selected>Common</option>
             <option value="important">Important</option>
             <option value="urgent">Urgent</option>
           </select>
@@ -70,6 +70,7 @@ export const createTaskForm = () => {
   });
 
   form.append(btnAdd, btnReset);
+  form.btnAdd = btnAdd;
 
   return form;
 };
@@ -87,10 +88,10 @@ export const createTable = () => {
   return table;
 };
 
-const createColumn = (htmlText = '') => {
+const createColumn = ({className, text}) => {
   const td = document.createElement('td');
-  td.classList.add('table__date');
-  td.insertAdjacentHTML('afterbegin', htmlText);
+  td.classList.add('table__date', className);
+  td.insertAdjacentHTML('afterbegin', text);
 
   return td;
 };
@@ -105,14 +106,13 @@ export const createRow = ({id, desc, status, priority}) => {
       class="checkbox__custom-input ${priority}" type="checkbox" name="checkbox"
     >
   `;
-  const tdCheckbox = createColumn(checkboxHTML);
-  tdCheckbox.classList.add('checkbox');
-
-  const tdDesc = createColumn(desc);
-  const tdAction = createColumn();
-
-  const statusText = status ? 'Done' : 'Process';
-  const tdStatus = createColumn(statusText);
+  const tdCheckbox = createColumn({className: 'checkbox', text: checkboxHTML});
+  const tdDesc = createColumn({className: 'desc', text: desc});
+  const tdStatus = createColumn({
+    className: 'status',
+    text: status ? 'Done' : 'Process',
+  });
+  const tdAction = createColumn({className: 'buttons', text: ''});
 
   const btnEdit = createButton({
     className: 'table__button button button-reset edit',

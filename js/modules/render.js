@@ -26,6 +26,7 @@ export const renderApp = (app) => {
     list: table.tbody,
     overlayLogin,
     loginForm,
+    form,
   };
 };
 
