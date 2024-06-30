@@ -161,7 +161,7 @@ export const createLoginForm = () => {
   overlay.append(container);
 
   return {
-    overlayLogin: overlay,
+    loginOverlay: overlay,
     loginForm: form,
   };
 };
@@ -172,4 +172,43 @@ export const openModal = (overlay) => {
 
 export const closeModal = (overlay) => {
   overlay.classList.remove('overlay--active');
+};
+
+export const createConfirmForm = () => {
+  const overlay = document.createElement('div');
+  overlay.classList.add('overlay');
+
+  const container = createContainer();
+
+  const form = document.createElement('form');
+  form.classList.add('modal', 'modal--confirm');
+
+  const question = document.createElement('p');
+  question.classList.add('modal__text');
+  question.textContent = 'Are you sure you want to delete the task?';
+
+  const btnGroup = document.createElement('div');
+  btnGroup.classList.add('modal__btn-group');
+
+  const btnCancel = createButton({
+    className: 'modal__button button button-reset cancel',
+    type: 'button',
+    text: 'Cancel',
+  });
+
+  const btnApply = createButton({
+    className: 'modal__button button button-reset apply',
+    type: 'button',
+    text: 'Apply',
+  });
+
+  btnGroup.append(btnCancel, btnApply);
+  form.append(question, btnGroup);
+  container.append(form);
+  overlay.append(container);
+
+  return {
+    confirmOverlay: overlay,
+    confirmForm: form,
+  };
 };

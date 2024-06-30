@@ -1,14 +1,21 @@
 import {renderApp, greetUser, renderTasks} from './modules/render.js';
 import {openModal, closeModal} from './modules/createElements.js';
 import {getUserTasks} from './modules/serviceStorage.js';
-import {addTaskControl} from './modules/controls.js';
+import {addTaskControl, removeTaskControl} from './modules/controls.js';
 
 {
   const init = (selectorApp) => {
     const app = document.querySelector(selectorApp);
 
-    const {overlayLogin, loginForm, list, form} = renderApp(app);
-    openModal(overlayLogin);
+    const {
+      confirmOverlay,
+      loginOverlay,
+      confirmForm,
+      loginForm,
+      list,
+      form,
+    } = renderApp(app);
+    openModal(loginOverlay);
 
     loginForm.addEventListener('submit', (e) => {
       e.preventDefault();
@@ -21,8 +28,9 @@ import {addTaskControl} from './modules/controls.js';
       renderTasks(list, userTasks);
 
       addTaskControl(form, list, userName);
+      removeTaskControl(list, userName, confirmOverlay, confirmForm);
 
-      closeModal(overlayLogin);
+      closeModal(loginOverlay);
     });
   };
 

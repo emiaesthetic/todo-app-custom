@@ -1,5 +1,5 @@
-import {createRow} from './createElements.js';
-import {getNextTaskID, addUserTask} from './serviceStorage.js';
+import {createRow, openModal, closeModal} from './createElements.js';
+import {getNextTaskID, addUserTask, removeUserTask} from './serviceStorage.js';
 
 const addTaskPage = (list, task) => {
   const taskRow = createRow(task);
@@ -27,5 +27,31 @@ export const addTaskControl = (form, list, userName) => {
 
   form.addEventListener('input', () => {
     form.btnAdd.disabled = !form.desc.value.trim();
+  });
+};
+
+export const removeTaskControl = (
+    list,
+    userName,
+    confirmOverlay,
+    confirmForm,
+) => {
+  list.addEventListener('click', (e) => {
+    const target = e.target;
+
+    if (target.closest('.delete')) {
+      openModal(confirmOverlay);
+      confirmForm.addEventListener('click', (e) => {
+        e.preventDefault();
+
+        const userAnswer = !e.target.closest('.cancel');
+        if (userAnswer) {
+          const row = target.closest('tr');
+          removeUserTask(userName, row.dataset.id);
+          row.remove();
+        }
+        closeModal(confirmOverlay);
+      });
+    }
   });
 };

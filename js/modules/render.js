@@ -6,25 +6,29 @@ import {
   createTable,
   createLoginForm,
   createRow,
+  createConfirmForm,
 } from './createElements.js';
 
 export const renderApp = (app) => {
   const container = createContainer();
   container.classList.add('app__container');
 
-  const {overlayLogin, loginForm} = createLoginForm();
+  const {loginOverlay, loginForm} = createLoginForm();
+  const {confirmOverlay, confirmForm} = createConfirmForm();
 
   const form = createTaskForm();
   const emptyElem = createEmptyToDo();
   const table = createTable();
 
-  container.append(overlayLogin, form, emptyElem, table);
-  app.append(container);
+  container.append(form, emptyElem, table);
+  app.append(container, loginOverlay, confirmOverlay);
   app.container = container;
 
   return {
     list: table.tbody,
-    overlayLogin,
+    confirmOverlay,
+    loginOverlay,
+    confirmForm,
     loginForm,
     form,
   };

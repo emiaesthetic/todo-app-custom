@@ -24,3 +24,12 @@ export const addUserTask = (userName, task) => {
 
   setStorage('accounts', accounts);
 };
+
+export const removeUserTask = (userName, taskID) => {
+  const accounts = getStorage('accounts');
+  const userTasks = getUserTasks(userName);
+
+  accounts[userName] = userTasks.filter((task) => task.id !== +taskID);
+
+  setStorage('accounts', accounts);
+};
