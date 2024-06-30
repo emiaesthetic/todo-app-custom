@@ -13,16 +13,21 @@ export const renderApp = (app) => {
 
   const {overlayLogin, loginForm} = createLoginForm();
 
-  const title = createTitle();
   const form = createTaskForm();
   const emptyElem = createEmptyToDo();
   const table = createTable();
 
-  container.append(overlayLogin, title, form, emptyElem, table);
+  container.append(overlayLogin, form, emptyElem, table);
   app.append(container);
+  app.container = container;
 
   return {
     overlayLogin,
     loginForm,
   };
+};
+
+export const greetUser = (app, userName) => {
+  const title = createTitle(userName);
+  app.container.prepend(title);
 };

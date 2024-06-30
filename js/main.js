@@ -1,4 +1,4 @@
-import {renderApp} from './modules/render.js';
+import {renderApp, greetUser} from './modules/render.js';
 import {openModal, closeModal} from './modules/createElements.js';
 
 {
@@ -13,7 +13,7 @@ import {openModal, closeModal} from './modules/createElements.js';
 
       const formData = new FormData(e.target);
       const userName = formData.get('user-name');
-      console.log(userName);
+      greetUser(app, userName);
 
       closeModal(overlayLogin);
     });

@@ -21,10 +21,10 @@ export const createContainer = () => {
   return container;
 };
 
-export const createTitle = () => {
+export const createTitle = (userName) => {
   const h1 = document.createElement('h1');
   h1.classList.add('app__title');
-  h1.textContent = 'todo list';
+  h1.textContent = `Hi, ${userName}. Your to-do list: `;
 
   return h1;
 };
