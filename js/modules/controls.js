@@ -1,5 +1,10 @@
 import {createRow, openModal, closeModal} from './createElements.js';
-import {getNextTaskID, addUserTask, removeUserTask} from './serviceStorage.js';
+import {
+  getNextTaskID,
+  addUserTask,
+  removeUserTask,
+  editUserTask,
+} from './serviceStorage.js';
 
 const addTaskPage = (list, task) => {
   const taskRow = createRow(task);
@@ -51,6 +56,23 @@ export const removeTaskControl = (
           row.remove();
         }
         closeModal(confirmOverlay);
+      });
+    }
+  });
+};
+
+export const editTaskControl = (list, userName) => {
+  list.addEventListener('click', (e) => {
+    const target = e.target;
+
+    if (target.closest('.edit')) {
+      const row = target.closest('tr');
+      const desc = row.querySelector('.desc');
+      desc.contentEditable = 'true';
+
+      desc.addEventListener('blur', () => {
+        desc.contentEditable = false;
+        editUserTask(userName, row.dataset.id, desc.textContent);
       });
     }
   });

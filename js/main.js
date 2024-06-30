@@ -1,7 +1,11 @@
 import {renderApp, greetUser, renderTasks} from './modules/render.js';
 import {openModal, closeModal} from './modules/createElements.js';
 import {getUserTasks} from './modules/serviceStorage.js';
-import {addTaskControl, removeTaskControl} from './modules/controls.js';
+import {
+  addTaskControl,
+  removeTaskControl,
+  editTaskControl,
+} from './modules/controls.js';
 
 {
   const init = (selectorApp) => {
@@ -29,6 +33,7 @@ import {addTaskControl, removeTaskControl} from './modules/controls.js';
 
       addTaskControl(form, list, userName);
       removeTaskControl(list, userName, confirmOverlay, confirmForm);
+      editTaskControl(list, userName);
 
       closeModal(loginOverlay);
     });
