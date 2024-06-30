@@ -127,3 +127,45 @@ export const createRow = ({id, desc, status, priority}) => {
 
   return tr;
 };
+
+export const createLoginForm = () => {
+  const overlay = document.createElement('div');
+  overlay.classList.add('overlay');
+
+  const container = createContainer();
+
+  const form = document.createElement('form');
+  form.classList.add('modal');
+  form.insertAdjacentHTML('afterbegin', `
+      <h2 class="modal__title">Login</h2>
+      <input
+        class="modal__input"
+        type="text"
+        name="user-name"
+        placeholder="Input your name..."
+      >
+    `);
+
+  const btnEnter = createButton({
+    className: 'modal__button button button-reset enter',
+    type: 'submit',
+    text: 'Enter',
+  });
+
+  form.append(btnEnter);
+  container.append(form);
+  overlay.append(container);
+
+  return {
+    overlayLogin: overlay,
+    loginForm: form,
+  };
+};
+
+export const openModal = (overlay) => {
+  overlay.classList.add('overlay--active');
+};
+
+export const closeModal = (overlay) => {
+  overlay.classList.remove('overlay--active');
+};
