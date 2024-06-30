@@ -29,6 +29,7 @@ export const renderApp = (app) => {
     confirmOverlay,
     loginOverlay,
     confirmForm,
+    emptyElem,
     loginForm,
     form,
   };

@@ -1,4 +1,10 @@
-import {createRow, openModal, closeModal} from './createElements.js';
+import {
+  createRow,
+  openModal,
+  closeModal,
+  showEmptyToDo,
+  hiddenEmptyToDo,
+} from './createElements.js';
 import {
   getNextTaskID,
   addUserTask,
@@ -12,7 +18,14 @@ const addTaskPage = (list, task) => {
   list.append(taskRow);
 };
 
-export const addTaskControl = (form, list, userName) => {
+export const showOrHiddenEmpty = (list, emptyElem) => {
+  if (list.children.length === 0) {
+    return showEmptyToDo(emptyElem);
+  }
+  return hiddenEmptyToDo(emptyElem);
+};
+
+export const addTaskControl = (form, list, userName, emptyElem) => {
   form.addEventListener('submit', (e) => {
     e.preventDefault();
 
@@ -25,6 +38,7 @@ export const addTaskControl = (form, list, userName) => {
 
     form.reset();
     form.btnAdd.disabled = true;
+    showOrHiddenEmpty(list, emptyElem);
   });
 
   form.addEventListener('reset', () => {
@@ -41,6 +55,7 @@ export const removeTaskControl = (
     userName,
     confirmOverlay,
     confirmForm,
+    emptyElem,
 ) => {
   list.addEventListener('click', (e) => {
     const target = e.target;
@@ -57,6 +72,7 @@ export const removeTaskControl = (
           row.remove();
         }
         closeModal(confirmOverlay);
+        showOrHiddenEmpty(list, emptyElem);
       });
     }
   });

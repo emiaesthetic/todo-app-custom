@@ -6,6 +6,7 @@ import {
   removeTaskControl,
   editTaskControl,
   completeTaskControl,
+  showOrHiddenEmpty,
 } from './modules/controls.js';
 
 {
@@ -16,6 +17,7 @@ import {
       confirmOverlay,
       loginOverlay,
       confirmForm,
+      emptyElem,
       loginForm,
       list,
       form,
@@ -31,11 +33,12 @@ import {
 
       const userTasks = getUserTasks(userName);
       renderTasks(list, userTasks);
+      showOrHiddenEmpty(list, emptyElem);
 
-      addTaskControl(form, list, userName);
+      addTaskControl(form, list, userName, emptyElem);
       editTaskControl(list, userName);
       completeTaskControl(list, userName);
-      removeTaskControl(list, userName, confirmOverlay, confirmForm);
+      removeTaskControl(list, userName, confirmOverlay, confirmForm, emptyElem);
 
       closeModal(loginOverlay);
     });

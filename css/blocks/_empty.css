@@ -1,8 +1,12 @@
 .empty {
-  display: flex;
+  display: none;
   flex-direction: column;
   align-items: center;
   row-gap: 20px;
+}
+
+.empty--active {
+  display: flex;
 }
 
 .empty__text {

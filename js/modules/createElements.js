@@ -15,6 +15,14 @@ export const createEmptyToDo = () => {
   return emptyElem;
 };
 
+export const showEmptyToDo = (emptyElem) => {
+  emptyElem.classList.add('empty--active');
+};
+
+export const hiddenEmptyToDo = (emptyElem) => {
+  emptyElem.classList.remove('empty--active');
+};
+
 export const createContainer = () => {
   const container = document.createElement('div');
   container.classList.add('container');
