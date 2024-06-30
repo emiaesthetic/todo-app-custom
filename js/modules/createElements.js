@@ -91,6 +91,8 @@ const createColumn = (htmlText = '') => {
   const td = document.createElement('td');
   td.classList.add('table__date');
   td.insertAdjacentHTML('afterbegin', htmlText);
+
+  return td;
 };
 
 export const createRow = ({id, desc, status, priority}) => {
@@ -107,8 +109,10 @@ export const createRow = ({id, desc, status, priority}) => {
   tdCheckbox.classList.add('checkbox');
 
   const tdDesc = createColumn(desc);
-  const tdStatus = createColumn(status);
   const tdAction = createColumn();
+
+  const statusText = status ? 'Done' : 'Process';
+  const tdStatus = createColumn(statusText);
 
   const btnEdit = createButton({
     className: 'table__button button button-reset edit',

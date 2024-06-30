@@ -5,6 +5,7 @@ import {
   createTaskForm,
   createTable,
   createLoginForm,
+  createRow,
 } from './createElements.js';
 
 export const renderApp = (app) => {
@@ -22,6 +23,7 @@ export const renderApp = (app) => {
   app.container = container;
 
   return {
+    list: table.tbody,
     overlayLogin,
     loginForm,
   };
@@ -30,4 +32,10 @@ export const renderApp = (app) => {
 export const greetUser = (app, userName) => {
   const title = createTitle(userName);
   app.container.prepend(title);
+};
+
+export const renderTasks = (list, tasks) => {
+  const allRow = tasks.map(createRow);
+  list.append(...allRow);
+  return allRow;
 };
