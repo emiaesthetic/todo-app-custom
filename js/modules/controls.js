@@ -65,7 +65,7 @@ export const removeTaskControl = (
       confirmForm.addEventListener('click', (e) => {
         e.preventDefault();
 
-        const userAnswer = !e.target.closest('.cancel');
+        const userAnswer = e.target.closest('.apply');
         if (userAnswer) {
           const row = target.closest('tr');
           removeUserTask(userName, row.dataset.id);
